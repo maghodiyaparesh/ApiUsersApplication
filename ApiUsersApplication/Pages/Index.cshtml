@@ -1,0 +1,31 @@
+﻿@page
+@model ApiUsersApplication.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>Users List</h2>
+<a href="~/addusers">Add Users</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Joining Date</th>
+            <th>IsMember</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var users in Model.UsersList)
+        {
+            <tr>
+                <td>@users.FirstName @users.LastName</td>
+                <td>@users.Email</td>
+                <td>@users.IsActive</td>
+                <td>@users.JoiningDate.ToShortDateString()</td>
+                <td>@users.IsMember</td>
+            </tr>
+        }
+    </tbody>
+</table>
